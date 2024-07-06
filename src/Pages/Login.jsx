@@ -29,20 +29,24 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const res = await getLoginService.call({
-      email: loginMail,
-      password: password,
-    });
-    const { response, error } = res;
-    console.log(response);
+    try {
+        const res = await getLoginService.call({
+        email: loginMail,
+        password: password,
+        });
+        const { response, error } = res;
+        console.log(response);
 
-    if (response?.result?.authToken) {
-      setItem(KEY_ACCESS_TOKEN, response.result.authToken);
-      navigate(adminRoute.path);
-    } else {
-      console.log(error);
+        if (response?.result?.authToken) {
+        setItem(KEY_ACCESS_TOKEN, response.result.authToken);
+        navigate(adminRoute.path);
+        } else {
+        console.log(error);
+        }
+    } catch (err) {
+            console.log("Login failed", err.message);
     }
-  };
+};
 
   const goToSignup = () => {
     navigate(signupRoute.path);
@@ -53,7 +57,6 @@ const Login = () => {
       <Box
         sx={{
           width: "100%",
-          mt: "70px",
           background: lightNavyBg,
           display: "flex",
           flexDirection: "column",
@@ -77,6 +80,7 @@ const Login = () => {
               xs: 2,
               sm: 5,
             },
+            mt: '70px',
             display: "flex",
             flexDirection: "column",
             gap: 5,

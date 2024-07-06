@@ -17,7 +17,6 @@ const Signup = () => {
     <>
     <Box sx={{
         width: '100%',
-        mt: '70px',
         background: lightNavyBg,
         display: 'flex',
         flexDirection: 'column',
@@ -43,6 +42,7 @@ const Signup = () => {
             flexDirection: 'column',
             gap: 2,
             paddingBlock: 3,
+            mt: '70px',
             border: `2px solid ${navyLogoColor}`,
             '& > div': {
                 background: 'white'

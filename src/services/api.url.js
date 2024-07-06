@@ -10,7 +10,7 @@ export const apiAuthUrl = {
 }
 
 export const apiAboutUrl = {
-    aboutAllData:{
+    aboutAllData : {
         endpoint: 'about/all',
         method: 'GET'
     },
@@ -18,4 +18,16 @@ export const apiAboutUrl = {
         endpoint: 'about',
         method: 'GET'
     },
+    createAbout : {
+        endpoint: 'about/create',
+        method: 'POST'
+    },
+    deleteAbout : {
+        endpoint: 'about/delete',
+        method: 'DELETE'
+    },
+    updateAbout: {
+        endpoint: 'about/update',
+        method: 'PUT'
+    }
 }

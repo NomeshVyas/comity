@@ -15,12 +15,11 @@ const useApi = (urlObj) => {
             error = err.message;
         }
         return {
-                response,
-                error,
-            }
+            response,
+            error,
+        }
     }
     return { call }
-    
 }
 
 export default useApi;

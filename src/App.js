@@ -1,41 +1,57 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Components/navbar/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { adminRoute, courseRoute, loginRoute, navRoutes, signupRoute } from './Common/routes';
-import DrawerNavbar from './Components/navbar/DrawerNavbar';
+import { adminOptionRoutes, adminRoute, courseRoute, loginRoute, navRoutes, signupRoute } from './Common/routes';
 import { contactRoute } from './Common/routes';
+import RequireAdmin from './Components/utils/RequireAdmin';
+import Main from './Pages/wrapper/Main';
+import AboutState from './context/admin/AboutState';
+import IndustryState from './context/admin/IndustryState';
 
 function App() {
-  const [openDrawer, setOpenDrawer] = React.useState(false);
-  const toggleDrawer = () => {
-    setOpenDrawer(prev => !prev);
-  }
 
   return (
-    <BrowserRouter>
 
-      <Navbar toggleDrawer={toggleDrawer} />
-      <DrawerNavbar openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+    // Context api components
+    <IndustryState>
+    <AboutState>
+
+  {/* Main Router */}
+    <BrowserRouter>
     
       <Routes>
-        {
-          navRoutes.map(el => 
-            <Route key={el.name} path={el.path} element={<el.element />} />
-          )
-        }
+        <Route element={<Main />} >
+          {
+            navRoutes.map(el => 
+              <Route key={el.name} path={el.path} element={<el.element />} />
+            )
+          }
 
-        {/* Other Routes */}
-        <Route path={contactRoute.path} element={<contactRoute.element />} />
-        <Route path={`${courseRoute.path}/:course`} element={<courseRoute.element />} />
+          {/* Other Routes */}
+          <Route path={contactRoute.path} element={<contactRoute.element />} />
+          <Route path={`${courseRoute.path}/:course`} element={<courseRoute.element />} />
+          
+        </Route>
 
         {/* Admin Pannel Routes */}
         <Route path={loginRoute.path} element={<loginRoute.element />} />
         <Route path={signupRoute.path} element={<signupRoute.element />} />
-        <Route path={adminRoute.path} element={<adminRoute.element />} />
+
+        <Route element={<RequireAdmin />} >
+          <Route path={adminRoute.path} element={<adminRoute.element />}>
+            {
+              adminOptionRoutes?.map(option => 
+                <Route key={option.name} path={option.path} element={<option.element />} />
+              )
+            }
+          </Route>
+        </Route>
 
       </Routes>
     </BrowserRouter>
+
+    </AboutState>
+    </IndustryState>
   );
 }
 

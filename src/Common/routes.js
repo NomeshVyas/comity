@@ -8,6 +8,9 @@ import Course from "../Components/utils/Course";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import Admin from "../Pages/Admin";
+import NavAdmin from "../Components/Admin/navbar/NavAdmin";
+import AboutAdmin from "../Components/Admin/about/AboutAdmin";
+import IndustryAdmin from "../Components/Admin/industry/IndustryAdmin";
 
 export const homeRoute = {
     name: 'home',
@@ -83,5 +86,26 @@ export const adminRoute = {
     name: 'admin',
     path: '/admin',
     title: 'Admin',
-    element: Admin    
+    element: Admin
 }
+
+export const adminOptionRoutes = [
+    {
+        name: 'navAdmin',
+        path: `${adminRoute.path}/nav`,
+        title: 'Navbar',
+        element: NavAdmin
+    },
+    {
+        name: 'aboutAdmin',
+        path: `${adminRoute.path}/about`,
+        title: 'About',
+        element: AboutAdmin
+    },
+    {
+        name: 'industryAdmin',
+        path: `${adminRoute.path}/industry`,
+        title: 'Industry',
+        element: IndustryAdmin
+    },
+]

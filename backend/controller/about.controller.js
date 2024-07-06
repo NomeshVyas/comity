@@ -4,13 +4,14 @@ import { About } from "../../backend/model/About.model.js";
 
 const createAboutController = async ( req, res ) => {
     try {
-        const { content } = req.body;
+        const { content, showThis } = req.body;
 
         if(!content)
             return res.send(error(400, "content is required"));
         
         const about = await About.create({
-            content
+            content,
+            showThis
         });
 
         return res.send(success(201, about));
@@ -21,9 +22,9 @@ const createAboutController = async ( req, res ) => {
 
 const updateAboutController = async ( req, res ) => {
     try {
-        const { aboutId, content, showThis } = req.body;
+        const { _id, content, showThis } = req.body;
 
-        const about = await About.findById(aboutId);
+        const about = await About.findById(_id);
 
         if( !about )
             return res.send(error(404, "About not found"));
@@ -33,6 +34,10 @@ const updateAboutController = async ( req, res ) => {
 
         if( showThis === false || showThis === true )
             about.showThis = showThis;
+        else if (showThis === "false")
+            about.showThis = false
+        else if ( showThis === "true")
+            about.showThis = true
 
         await about.save();
 

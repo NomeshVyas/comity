@@ -1,10 +1,31 @@
 import { Container, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../Components/utils/Footer'
-import { aboutMatter } from '../Common/aboutMatter'
+// import { aboutMatter } from '../Common/aboutMatter'
 import TopTemplete from '../Components/utils/TopTemplete'
+import useApi from '../Hooks/useApi'
+import { apiAboutUrl } from '../services/api.url'
 
 function About() {
+
+  const getAllAboutService = useApi(apiAboutUrl.aboutShowData);
+  const [aboutMatter, setAboutMatter] = useState([]) 
+
+  const getAllAbout = async () => {
+    try {
+      const res = await getAllAboutService.call();
+      const abouts = res?.response?.result?.abouts;
+      console.log(res.response.result?.abouts);
+      setAboutMatter(abouts);
+    } catch (err) {
+      
+    }
+  }
+
+  React.useEffect(() => {
+      getAllAbout()
+  }, [])
+
   return (
     <>
     {/* Top Templete */}
@@ -37,8 +58,8 @@ function About() {
 
       {/* About Us Material */}
       {
-        aboutMatter?.map((about, index) => 
-          <Typography key={index}>{about}</Typography>
+        aboutMatter?.map((about) => 
+          <Typography key={about._id}>{about.content}</Typography>
         )
       }
       <Typography>

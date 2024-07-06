@@ -35,7 +35,7 @@ function Capabilities() {
     }}>
       {
         capabilityIntro?.map((line) => 
-          <Typography>
+          <Typography key={line.content}>
             {line.content}
           </Typography>
         )

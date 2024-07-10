@@ -3,11 +3,11 @@ import { Box, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mu
 import { darkNavyBg, lightNavyBg } from "../../Common/constants"
 
 
-const Industry = ({ industry }) => {
+const Industry = ({ industry, index }) => {
   return (
     <Box sx={{
-        color: industry.id%2===0 ? darkNavyBg : lightNavyBg,
-        background: industry.id%2===0 ? lightNavyBg: darkNavyBg,
+        color: index%2===0 ? lightNavyBg : darkNavyBg,
+        background: index%2===0 ? darkNavyBg: lightNavyBg,
         paddingBlock: {
             xs: 2,
             sm: 5,
@@ -52,10 +52,6 @@ const Industry = ({ industry }) => {
             Scheme  &rarr; {industry.scheme}
             </Typography>
 
-            {/* <Typography>
-                {industry.schemeTag}
-            </Typography> */}
-
             <Typography variant="h6" sx={{
                 mb: -1
             }}>
@@ -68,11 +64,11 @@ const Industry = ({ industry }) => {
                 }
             }}>
                 {
-                    industry.courses.map((name, index) =>
-                        <ListItem key={index}>
+                    industry.courses.map((name, i) =>
+                        <ListItem key={i}>
                             <ListItemIcon sx={{
-                                color: industry.id%2===0 ? darkNavyBg : lightNavyBg
-                            }}>{index+1}</ListItemIcon>
+                                color: index%2===0 ? lightNavyBg : darkNavyBg
+                            }}>{i+1}.</ListItemIcon>
                             <ListItemText>{name}</ListItemText>
                         </ListItem> 
                     )

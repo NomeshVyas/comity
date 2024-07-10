@@ -31,3 +31,26 @@ export const apiAboutUrl = {
         method: 'PUT'
     }
 }
+
+export const apiIndustryUrl = {
+    industryAllData : {
+        endpoint: 'industry/all',
+        method: 'GET'
+    },
+    industryShowData : {
+        endpoint: 'industry',
+        method: 'GET'
+    },
+    createIndustry : {
+        endpoint: 'industry/create',
+        method: 'POST'
+    },
+    deleteIndustry : {
+        endpoint: 'industry/delete',
+        method: 'DELETE'
+    },
+    updateIndustry: {
+        endpoint: 'industry/update',
+        method: 'PUT'
+    }
+}

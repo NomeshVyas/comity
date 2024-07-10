@@ -22,7 +22,7 @@ import aboutContext from "../../../context/admin/aboutContext";
 
 const AboutEdit = () => {
 
-    const { openEditModal, editAbout, setEditAbout, closeEditModal, handleUpdate, handleDeleteInModal } = useContext(aboutContext);
+  const { openEditModal, editAbout, setEditAbout, closeEditModal, handleUpdate, handleDeleteInModal } = useContext(aboutContext);
 
 
   return (
@@ -74,8 +74,6 @@ const AboutEdit = () => {
             cursor: 'pointer',
             color: redColor,
             borderRadius: 2,
-            ':hover': {
-            }
         }} onClick={closeEditModal} />
         </Typography>
 

@@ -4,15 +4,41 @@ import useApi from "../../Hooks/useApi";
 import { apiAboutUrl } from "../../services/api.url";
 
 const AboutState = (props) => {
+  // useState declarations
+  const [allAbouts, setAllAbouts] = useState([]);
+  const [aboutMatter, setAboutMatter] = useState([]) 
+  const [aboutCreate, setAboutCreate] = useState({
+    content: "",
+    showThis: true,
+  });
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [editAbout, setEditAbout] = useState({
+    content: "",
+    showThis: true,
+  });
+  
   // Calling all about data api
   const getAllAboutService = useApi(apiAboutUrl.aboutAllData);
-  const [allAbouts, setAllAbouts] = useState([]);
-
+  
   const getAllAbout = async () => {
     const res = await getAllAboutService.call();
     if (res?.response?.result?.abouts) 
-        setAllAbouts(res.response.result.abouts);
+      setAllAbouts(res.response.result.abouts);
   };
+  
+
+  // Calling all show about data api
+  const getAllShowAboutService = useApi(apiAboutUrl.aboutShowData);
+
+  const getAllShowAbout = async () => {
+    try {
+      const res = await getAllShowAboutService.call();
+      const abouts = res?.response?.result?.abouts;
+      setAboutMatter(abouts);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 
   // Calling delete api and handle delete button
   const getDeleteAboutService = useApi(apiAboutUrl.deleteAbout);
@@ -26,11 +52,6 @@ const AboutState = (props) => {
   };
 
   // Calling create new about section api and handing create button
-  const [aboutCreate, setAboutCreate] = useState({
-    content: "",
-    showThis: true,
-  });
-
   const getCreateAboutService = useApi(apiAboutUrl.createAbout);
 
   const handleCreate = async () => {
@@ -44,13 +65,6 @@ const AboutState = (props) => {
   };
 
   // Handling edit about section
-  const [openEditModal, setOpenEditModal] = useState(false);
-
-  const [editAbout, setEditAbout] = useState({
-    content: "",
-    showThis: true,
-  });
-
   const handleEditButton = (about) => {
     setEditAbout(about);
     setOpenEditModal(true);
@@ -60,18 +74,16 @@ const AboutState = (props) => {
     setOpenEditModal(false);
   };
 
-//   Calling update about api and handing update button
+  // Calling update about api and handing update button
   const getUpdateAboutService = useApi(apiAboutUrl.updateAbout);
 
   const handleUpdate = async (about) => {
-    const res = await getUpdateAboutService.call(about);
-    console.log(about);
+    await getUpdateAboutService.call(about);
     getAllAbout();
-    console.log(res.response);
     setOpenEditModal(false);
-}
+  }
 
-const handleDeleteInModal = (id) => {
+  const handleDeleteInModal = (id) => {
     handleDelete(id);
     setOpenEditModal(false);
   }
@@ -81,6 +93,8 @@ const handleDeleteInModal = (id) => {
       value={{
         allAbouts,
         getAllAbout,
+        aboutMatter,
+        getAllShowAbout,
         handleDelete,
         aboutCreate,
         handleCreate,

@@ -12,7 +12,7 @@ const Chart = ({ data, width, height, innerRadius, cx, isHidden }) => {
                 paddingAngle: 1,
                 cornerRadius: 5,
                 cx: cx || '50%',
-                startAngle: -25,
+                // startAngle: -25,
                 color: data.color,
                 arcLabel: item => `${item.label}`,
                 highlightScope: {

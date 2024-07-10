@@ -105,7 +105,6 @@ const IndustryState = (props) => {
   };
 
   // Handling edit Industry section
-
   const handleEditButton = (industry) => {
     setEditIndustry(industry);
     setOpenEditModal(true);
@@ -132,6 +131,7 @@ const IndustryState = (props) => {
   };
 
   const handleOpenChildModal = () => {
+    // setCourses(allIndustries.courses);
     setOpenChildModal(true);
   };
 

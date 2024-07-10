@@ -5,7 +5,7 @@ import bgMinWidth from '../../Common/images/fourthBlockBg/fourthBlockMinWidth.jp
 const FourthBlock = ({ goToContact }) => {
   return (
     <Box sx={{
-        height: '100vh',
+        height: 'calc(100vh - 70px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

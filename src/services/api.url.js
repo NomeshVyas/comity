@@ -32,7 +32,6 @@ export const apiAboutUrl = {
     }
 }
 
-<<<<<<< HEAD
 export const apiContactUrl = {
   ContactAllData: {
     endpoint: "contact/",
@@ -69,8 +68,6 @@ export const apiSocialMediaUrl = {
     method: "PUT",
   },
 };
-
-=======
 export const apiIndustryUrl = {
     industryAllData : {
         endpoint: 'industry/all',
@@ -93,4 +90,4 @@ export const apiIndustryUrl = {
         method: 'PUT'
     }
 }
->>>>>>> 9d8b280e3769db01e2abc58bb16e046770457d3a
+

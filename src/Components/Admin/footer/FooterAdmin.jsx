@@ -23,9 +23,8 @@ const FooterAdmin = () => {
             borderColor: "divider",
             display: 'flex',
             justifyContent: 'center'
-            // border: '1px solid red' 
           }}>
-            <TabList onChange={handleChange} aria-label="admin tabs">
+            <TabList onChange={handleChange} aria-label="admin tabs" >
               <Tab label="Contact Admin" value="1" />
               <Tab label="Social Media Admin" value="2" />
             </TabList>

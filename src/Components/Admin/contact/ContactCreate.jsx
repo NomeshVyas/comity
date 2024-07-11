@@ -43,9 +43,6 @@ const ContactCreate = () => {
         },
       }}
     >
-      <Typography component="label">
-        Add content for new Contact section &rarr;
-      </Typography>
 
       <Typography component="label">Select your type: &rarr;</Typography>
       <RadioGroup
@@ -92,9 +89,9 @@ const ContactCreate = () => {
       </RadioGroup>
 
       <TextField
-        label="Content"
+        label="Mobile number / Address"
         multiline
-        rows={5}
+        rows={3}
         fullWidth
         sx={{
           background: "white",
@@ -105,7 +102,10 @@ const ContactCreate = () => {
         }
       />
 
-      <Button variant="contained" color="primary" onClick={handleCreate}>
+      <Button variant="contained" size="large" onClick={handleCreate} sx={{
+          maxWidth: 120,
+          textTransform: "none",
+        }}>
         Create
       </Button>
     </FormControl>

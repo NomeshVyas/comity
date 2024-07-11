@@ -7,7 +7,7 @@ import linkedinActive from '../Common/images/socialIcons/linkedinActive.png'
 
 export const socialMeadia = [
     {
-        name: 'Facebook',
+        type: 'Facebook',
         img: facebook,
         activeImg: facebookActive,
         link: 'https://www.facebook.com/OpportunityAtDoorstep/'

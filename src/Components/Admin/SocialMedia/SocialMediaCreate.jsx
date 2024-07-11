@@ -13,6 +13,7 @@ import {
   greenColor,
   lightNavyBg,
   navyLogoColor,
+  navyTextColor,
   redColor,
 } from "../../../Common/constants";
 import SocialMediaContext from "../../../context/admin/socialMediaContext";
@@ -43,11 +44,8 @@ const SocialMediaCreate = () => {
         },
       }}
     >
-      <Typography component="label">
-        Add link for new SocialMedia section &rarr;
-      </Typography>
 
-      <Typography component="label">Select your type: &rarr;</Typography>
+      <Typography component="label">Select Social Platform: &rarr;</Typography>
       <RadioGroup
         row
         sx={{
@@ -66,9 +64,9 @@ const SocialMediaCreate = () => {
           control={
             <Radio
               sx={{
-                color: "blue",
+                color: '#0866FF',
                 "&.Mui-checked": {
-                  color: "blue",
+                  color: '#0866FF',
                 },
               }}
             />
@@ -90,25 +88,23 @@ const SocialMediaCreate = () => {
           label="Instagram"
         />
         <FormControlLabel
-          value={"twitter"}
+          value={"linkedin"}
           control={
             <Radio
               sx={{
-                color: "black",
+                color: "#0A66C2",
                 "&.Mui-checked": {
-                  color: "black",
+                  color: "#0A66C2",
                 },
               }}
             />
           }
-          label="Twitter"
+          label="LinkedIn"
         />
       </RadioGroup>
 
       <TextField
-        label="link"
-        multiline
-        rows={5}
+        label="Link Address"
         fullWidth
         sx={{
           background: "white",
@@ -119,8 +115,11 @@ const SocialMediaCreate = () => {
         }
       />
 
-      <Button variant="contained" color="primary" onClick={handleCreate}>
-        Create
+      <Button variant="contained" size="large" color="primary" onClick={handleCreate} sx={{
+          maxWidth: 120,
+          textTransform: "none",
+        }}>
+        Add
       </Button>
     </FormControl>
   );

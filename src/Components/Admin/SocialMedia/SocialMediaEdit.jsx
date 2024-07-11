@@ -90,7 +90,7 @@ const SocialMediaEdit = () => {
         </Typography>
 
         {/* Show this on website page radio button */}
-        <Typography component="label">Select your type &rarr;</Typography>
+        <Typography component="label">Social Platform &rarr;</Typography>
         <RadioGroup
           row
           sx={{
@@ -133,27 +133,25 @@ const SocialMediaEdit = () => {
             label="Instagram"
           />
           <FormControlLabel
-            value={"twitter"}
+            value={"linkedin"}
             control={
               <Radio
-                sx={{
-                  color: "black",
-                  "&.Mui-checked": {
-                    color: "black",
-                  },
-                }}
+              sx={{
+                color: "#0A66C2",
+                "&.Mui-checked": {
+                  color: "#0A66C2",
+                },
+              }}
               />
             }
-            label="Twitter"
+            label="LinkedIn"
           />
         </RadioGroup>
 
         {/* Edit Content Section */}
-        <Typography component="label">Edit Content &rarr;</Typography>
+        <Typography component="label">Edit Link Address &rarr;</Typography>
         <TextField
-          label="Content"
-          multiline
-          rows={5}
+          label="Link Address"
           fullWidth
           sx={{
             background: "white",

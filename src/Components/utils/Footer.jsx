@@ -1,27 +1,45 @@
 import { Box, Link, List, ListItem, Typography } from "@mui/material";
 import { darkNavyBg, lightNavyBg, navyTextColor } from "../../Common/constants";
 import { socialMeadia } from "../../Common/socialPlatforms";
-// import { contacts } from "../../Common/ContactInfo";
+import { contacts } from "../../Common/ContactInfo";
 import logo from "../../Common/images/logos/comityCrop.png";
 // import ContactContext from "../../context/admin/contactContext";
 import useApi from "../../Hooks/useApi";
 import { apiContactUrl } from "../../services/api.url";
-import React,{  useState } from "react";
+import React,{  useContext, useState } from "react";
+import SocialMediaContext from "../../context/admin/socialMediaContext";
+
+// Social Media Photos
+import facebook from '../../Common/images/socialIcons/facebook.png'
+import facebookActive from '../../Common/images/socialIcons/facebookActive.png'
+import instagram from '../../Common/images/socialIcons/instagram.png'
+import instagramActive from '../../Common/images/socialIcons/instagramActive.png'
+import linkedin from '../../Common/images/socialIcons/linkedin.png'
+import linkedinActive from '../../Common/images/socialIcons/linkedinActive.png'
+
+// Contact icons
+import { LocationOn, PhoneAndroid } from "@mui/icons-material";
+import ContactContext from "../../context/admin/contactContext";
+
 
 const Footer = () => {
-  const getAllContactService = useApi(apiContactUrl.contactShowData);
-  const [contactMatter, setContactMatter] = useState([]);
 
-  const getAllContact = async () => {
-    try {
-      const res = await getAllContactService.call();
-      const contacts = res?.response?.result?.contacts;
-      console.log(res.response.result?.contacts);
-      setContactMatter(contacts);
-    } catch (err) {}
-  };
+  const socialIcons = (item) => {
+    if(item.type === 'facebook') return {img: facebook, activeImg: facebookActive}
+    else if(item.type === 'instagram') return {img: instagram, activeImg: instagramActive}
+    else if(item.type === 'linkedin') return {img: linkedin, activeImg: linkedinActive}
+  }
+
+  const contactIcons = (contactType) => {
+    if (contactType === "phone") return <PhoneAndroid />;
+    if (contactType === "address") return <LocationOn />;
+  }
+
+  const { getAllSocialMedia, allSocialMedias } = useContext(SocialMediaContext);
+  const { allContacts, getAllContact } = useContext(ContactContext);
 
   React.useEffect(() => {
+    getAllSocialMedia();
     getAllContact();
   }, []);
 
@@ -79,17 +97,17 @@ const Footer = () => {
             pt: 2,
           }}
         >
-          {socialMeadia?.map((item) => (
-            <Link target="blank" key={item.name} href={item.link}>
+          {allSocialMedias?.map((item) => (
+            <Link key={item.type} target="blank" href={item.link}>
               <Box
                 sx={{
                   width: "30px",
                   height: "30px",
-                  background: `url(${item.img})`,
+                  background: `url(${socialIcons(item).img})`,
                   backgroundSize: "cover",
                   cursor: "pointer",
-                  ":hover": {
-                    background: `url(${item.activeImg})`,
+                  ": hover": {
+                    background: `url(${socialIcons(item).activeImg})`,
                     backgroundSize: "cover",
                   },
                 }}
@@ -104,7 +122,7 @@ const Footer = () => {
         <Typography variant="h6">Contact Details</Typography>
         <List
           sx={{
-            fontSize: 12,
+            fontSize: 14,
             "& > li": {
               paddingLeft: 0,
               ":hover": {
@@ -115,9 +133,9 @@ const Footer = () => {
             },
           }}
         >
-          {contactMatter?.map((contact) => (
+          {allContacts?.map((contact) => (
             <ListItem key={contact._id}>
-              {contact.type}: {contact.content}
+              {contactIcons(contact.type)}: {contact.content}
             </ListItem>
           ))}
         </List>

@@ -18,7 +18,13 @@ const FooterAdmin = () => {
     <>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box sx={{ 
+            borderBottom: 1, 
+            borderColor: "divider",
+            display: 'flex',
+            justifyContent: 'center'
+            // border: '1px solid red' 
+          }}>
             <TabList onChange={handleChange} aria-label="admin tabs">
               <Tab label="Contact Admin" value="1" />
               <Tab label="Social Media Admin" value="2" />
@@ -28,7 +34,7 @@ const FooterAdmin = () => {
             <ContactAdmin />
           </TabPanel>
           <TabPanel value="2">
-            <SocialMediaAdmin/>
+            <SocialMediaAdmin />
           </TabPanel>
         </TabContext>
       </Box>

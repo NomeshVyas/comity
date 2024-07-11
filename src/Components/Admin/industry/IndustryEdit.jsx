@@ -40,6 +40,7 @@ const IndustryEdit = () => {
       open={openEditModal}
       sx={{
         overflow: "scroll",
+        // marginBlock: 2
       }}
     >
       <FormControl
@@ -57,6 +58,7 @@ const IndustryEdit = () => {
           borderRadius: 2,
           background: lightNavyBg,
           p: 2,
+          pt: 0,
           display: "flex",
           flexDirection: "column",
           gap: 1,
@@ -79,6 +81,7 @@ const IndustryEdit = () => {
             gap: 1,
             position: "relative",
             pr: 4,
+            pt: 2
           }}
         >
           <Stars />
@@ -92,6 +95,8 @@ const IndustryEdit = () => {
               cursor: "pointer",
               color: redColor,
               borderRadius: 2,
+              // pt: 2
+              mt: 2
             }}
             onClick={closeEditModal}
           />
@@ -115,7 +120,7 @@ const IndustryEdit = () => {
         <TextField
           label="Edit Description"
           multiline
-          rows={3}
+          rows={4}
           fullWidth
           sx={{
             background: "white",
@@ -162,7 +167,7 @@ const IndustryEdit = () => {
               width: "85%",
               background: "white",
             }}
-            defaultValue={editIndustry.courses}
+            defaultValue={`Courses: ${editIndustry.courses}`}
           />
           <Button variant="outlined" onClick={handleOpenChildModal}>
             Edit

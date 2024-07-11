@@ -12,6 +12,7 @@ const SocialMediaState = ({ children }) => {
   const getAllSocialMediaService = useApi(apiSocialMediaUrl.SocialMediaAllData);
   const getAllSocialMedia = async () => {
     const res = await getAllSocialMediaService.call();
+    console.log(res?.response);
     if (res?.response?.result?.socialMedias) {
       setAllSocialMedias(res.response.result.socialMedias);
     } else {

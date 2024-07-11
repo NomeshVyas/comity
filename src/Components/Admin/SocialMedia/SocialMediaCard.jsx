@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Link, Typography } from "@mui/material";
 import { greenColor, navyLogoColor, redColor } from "../../../Common/constants";
 import SocialMediaContext from "../../../context/admin/socialMediaContext";
 
@@ -40,20 +40,20 @@ const SocialMediaCard = ({ socialMedia }) => {
           },
         }}
       >
-        <Typography component="span">Select your type :</Typography>
+        <Typography component="span">Social Platform :</Typography>
 
-        {socialMedia.type == "facebook" ? (
+        {socialMedia.type === "facebook" ? (
           <Typography
             style={{
-              color: "blue",
+              color: "#0866FF",
             }}
           >
             Facebook
           </Typography>
-        ) : socialMedia.type == "instagram" ? (
+        ) : socialMedia.type === "instagram" ? (
           <Typography
             style={{
-              color: "pink",
+              color: redColor,
             }}
           >
             Instagram
@@ -61,17 +61,29 @@ const SocialMediaCard = ({ socialMedia }) => {
         ) : (
           <Typography
             style={{
-              color: "black",
+              color: "#0A66C2",
             }}
           >
-            Twitter
+            LinkedIn
           </Typography>
         )}
       </Box>
 
-      <Typography>
-        <Typography component="span">Link : </Typography>
+      <Typography sx={{
+        mb: 2,
+        '& > span': {
+          color: navyLogoColor
+        },
+        '& > a': {
+          color: navyLogoColor,
+          textDecoration: 'underline',
+          cursor: 'pointer'
+        }
+      }} >
+        <Typography component="span">Link Address : </Typography>
+        <Link target='_blank' href={socialMedia?.link}>
         {socialMedia?.link}
+        </Link>
       </Typography>
 
       <Button

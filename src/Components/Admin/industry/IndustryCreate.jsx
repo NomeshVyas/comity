@@ -19,9 +19,8 @@ import {
 import industryContext from "../../../context/admin/industryContext";
 
 const IndustryCreate = () => {
-  const { industryCreate, setIndustryCreate } = useContext(industryContext);
+  const { course, setCourse, industryCreate, setIndustryCreate, handleCreate, handleAdd } = useContext(industryContext);
 
-  const [courses, setCourses] = React.useState([]);
 
   return (
     <FormControl
@@ -64,7 +63,7 @@ const IndustryCreate = () => {
       <TextField
         label="description"
         multiline
-        rows={5}
+        rows={4}
         required
         fullWidth
         sx={{
@@ -85,7 +84,7 @@ const IndustryCreate = () => {
           background: "white",
         }}
         required
-        value={industryCreate?.name}
+        value={industryCreate?.scheme}
         onChange={(e) =>
           setIndustryCreate({ ...industryCreate, scheme: e.target.value })
         }
@@ -96,38 +95,37 @@ const IndustryCreate = () => {
         Industry Courses &rarr;
     </Typography>
     <TextField
-        label="Add course below &darr;"
         fullWidth
         disabled
         multiline
-        placeholder="Add courses below..."
         sx={{
           background: "white",
         }}
-        defaultValue={courses}
+        defaultValue={industryCreate.courses}
       />
       <Box sx={{
         width: '100%',
-        border: '1px solid crimson',
         display: 'flex',
         alignItems: 'center',
-        gap: '5%',
+        gap: '3%',
         '& > button': {
-            height: '100%',
-            width: '10%',
-            // textTransform: 'none'
+            height: 56,
+            width: '12%',
+            fontSize: 'large',
+            background: 'white'
         }
       }}>
       <TextField
         label="Add Course"
-        placeholder="Add courses below..."
+        placeholder="Add Courses one by one here..."
         sx={{
           width: '85%',
           background: "white",
         }}
-        defaultValue={courses}
+        value={course}
+        onChange={(e) => setCourse(e.target.value)}
       />
-      <Button variant="contained" >
+      <Button variant="outlined" onClick={handleAdd} >
         Add
       </Button>
       </Box>
@@ -143,9 +141,9 @@ const IndustryCreate = () => {
           background: "white",
         }}
         required
-        value={industryCreate?.name}
+        value={industryCreate?.label}
         onChange={(e) =>
-          setIndustryCreate({ ...industryCreate, name: e.target.value })
+          setIndustryCreate({ ...industryCreate, label: e.target.value })
         }
       />
 
@@ -156,6 +154,7 @@ const IndustryCreate = () => {
       </Typography>
       <TextField
         label="#hex color code"
+        type="text"
         fullWidth
         sx={{
           background: "white",
@@ -178,11 +177,11 @@ const IndustryCreate = () => {
           borderRadius: 1,
           background: "white",
         }}
-        defaultValue={true}
-        // value={aboutCreate?.showThis}
-        // onChange={(e) =>
-        //   setAboutCreate({ ...aboutCreate, showThis: e.target.value })
-        // }
+        // defaultValue={true}
+        value={industryCreate?.showThis}
+        onChange={(e) =>
+          setIndustryCreate({ ...industryCreate, showThis: e.target.value })
+        }
       >
         <FormControlLabel
           value={true}
@@ -222,7 +221,7 @@ const IndustryCreate = () => {
           maxWidth: 120,
           textTransform: "none",
         }}
-        // onClick={handleCreate}
+        onClick={handleCreate}
       >
         Create
       </Button>

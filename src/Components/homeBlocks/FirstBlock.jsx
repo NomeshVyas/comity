@@ -16,6 +16,7 @@ const FirstBlock = ({ goToContact }) => {
     const mainBoxStyle = {
         background: lightNavyBg,
         width: '100%',
+        height: 'calc(100vh-70px)',
         paddingBottom: 18,
         display: 'flex',
         flexDirection: 'column',
@@ -59,7 +60,7 @@ const FirstBlock = ({ goToContact }) => {
         paddingBottom: 3,
         '& > h1, & > h2, & > h2 > span': {
             fontFamily: '-moz-initial',
-            },
+        },
         '& > h1': {
             fontSize: {
                 xs: 42,

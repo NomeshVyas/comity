@@ -32,6 +32,7 @@ export const apiAboutUrl = {
     }
 }
 
+<<<<<<< HEAD
 export const apiContactUrl = {
   ContactAllData: {
     endpoint: "contact/",
@@ -69,3 +70,27 @@ export const apiSocialMediaUrl = {
   },
 };
 
+=======
+export const apiIndustryUrl = {
+    industryAllData : {
+        endpoint: 'industry/all',
+        method: 'GET'
+    },
+    industryShowData : {
+        endpoint: 'industry',
+        method: 'GET'
+    },
+    createIndustry : {
+        endpoint: 'industry/create',
+        method: 'POST'
+    },
+    deleteIndustry : {
+        endpoint: 'industry/delete',
+        method: 'DELETE'
+    },
+    updateIndustry: {
+        endpoint: 'industry/update',
+        method: 'PUT'
+    }
+}
+>>>>>>> 9d8b280e3769db01e2abc58bb16e046770457d3a

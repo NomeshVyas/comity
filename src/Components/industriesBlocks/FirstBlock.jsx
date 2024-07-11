@@ -3,10 +3,10 @@ import React from 'react'
 import Chart from '../utils/Chart'
 // import { industriesChartColors } from '../../Common/chartData'
 import { lightNavyBg, navyLogoColor } from '../../Common/constants'
-import { industries } from '../../Common/industries'
+// import { industries } from '../../Common/industries'
 import { SquareRounded } from '@mui/icons-material'
 
-const FirstBlock = () => {
+const FirstBlock = ({ allShowIndustries }) => {
   return (
     <Box sx={{
         display: 'flex',
@@ -59,8 +59,8 @@ const FirstBlock = () => {
 
             {/* Industries List */}
             {
-                industries?.map((industry, index) => 
-                    <ListItem key={industry.name} >
+                allShowIndustries?.map((industry, index) => 
+                    <ListItem key={index} >
                         <SquareRounded sx={{color: industry.color}} />
                         <Link color={navyLogoColor} >{industry.name}</Link>
                     </ListItem>
@@ -77,7 +77,7 @@ const FirstBlock = () => {
             display: 'flex',
             justifyContent: 'center'
         }}>
-            <Chart data={industries} width={450} height={400} innerRadius={60} 
+            <Chart data={allShowIndustries} width={450} height={400} innerRadius={60} 
             cx={"62.5%"}
             />
         </Box>

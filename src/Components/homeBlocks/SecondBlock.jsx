@@ -5,8 +5,16 @@ import { useNavigate } from 'react-router-dom'
 import { navRoutes } from '../../Common/routes'
 import Chart from '../utils/Chart'
 import { homeChartData } from '../../Common/chartData'
+import { useContext, useEffect } from 'react'
+import industryContext from '../../context/admin/industryContext'
 
 const SecondBlock = () => {
+
+    const { allShowIndustries, getAllShowIndustries } = useContext(industryContext)
+
+    useEffect(() => {
+        getAllShowIndustries();
+    }, [])
 
     const navigate = useNavigate();
 
@@ -22,7 +30,6 @@ const SecondBlock = () => {
             sm: 7,
             md: 10
         },
-        // p: 2,
         paddingInline: {
             xs: 2,
             sm: 6,
@@ -38,13 +45,11 @@ const SecondBlock = () => {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
-        // gap: 2
     }} >
         <Box sx={{
             maxWidth: {
                 sm: '100%',
                 md: '52%',
-                // md: '50%'
             },
             display: 'flex',
             flexDirection: 'column',
@@ -80,7 +85,6 @@ const SecondBlock = () => {
             }
         }} >
             The Comity Edutech
-
         </Typography>
 
     {/* Description Section */}
@@ -139,7 +143,7 @@ const SecondBlock = () => {
             },
         }}>
             <Chart 
-                data={homeChartData}
+                data={allShowIndustries}
                 width={400} 
                 height={400} 
                 innerRadius={60} 

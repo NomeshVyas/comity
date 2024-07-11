@@ -31,3 +31,41 @@ export const apiAboutUrl = {
         method: 'PUT'
     }
 }
+
+export const apiContactUrl = {
+  ContactAllData: {
+    endpoint: "contact/",
+    method: "GET",
+  },
+  createContact: {
+    endpoint: "contact/create",
+    method: "POST",
+  },
+  deleteContact: {
+    endpoint: "contact/delete",
+    method: "DELETE",
+  },
+  updateContact: {
+    endpoint: "contact/update",
+    method: "PUT",
+  },
+};
+export const apiSocialMediaUrl = {
+  SocialMediaAllData: {
+    endpoint: "socialmedia/",
+    method: "GET",
+  },
+  createSocialMedia: {
+    endpoint: "socialmedia/create",
+    method: "POST",
+  },
+  deleteSocialMedia: {
+    endpoint: "socialmedia/delete",
+    method: "DELETE",
+  },
+  updateSocialMedia: {
+    endpoint: "socialmedia/update",
+    method: "PUT",
+  },
+};
+

@@ -7,6 +7,8 @@ import RequireAdmin from './Components/utils/RequireAdmin';
 import Main from './Pages/wrapper/Main';
 import AboutState from './context/admin/AboutState';
 import IndustryState from './context/admin/IndustryState';
+import ContactState from './context/admin/ContactState';
+import SocialMediaState from './context/admin/SocialMediaState';
 
 function App() {
 
@@ -15,6 +17,9 @@ function App() {
     // Context api components
     <IndustryState>
     <AboutState>
+    <ContactState>
+    <SocialMediaState>
+
 
   {/* Main Router */}
     <BrowserRouter>
@@ -49,7 +54,8 @@ function App() {
 
       </Routes>
     </BrowserRouter>
-
+    </SocialMediaState>
+    </ContactState>
     </AboutState>
     </IndustryState>
   );

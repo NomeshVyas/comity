@@ -5,6 +5,8 @@ import { navRoutes } from '../../Common/routes';
 import { Menu } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../Common/images/logos/comity2.png'
+import { useContext } from 'react';
+import navContext from '../../context/admin/navContext';
 
 const StyledAppBar = styled(AppBar)({
   boxShadow: 'none'
@@ -43,6 +45,9 @@ const menuIcon = {
 }
 
 function Navbar({ toggleDrawer }) {
+
+  const { navbarRoutes } = useContext(navContext);
+
   const navigate = useNavigate();
   return (
     <StyledAppBar color='action' >
@@ -56,8 +61,8 @@ function Navbar({ toggleDrawer }) {
       {/* Navbar Options */}
       <Box sx={navOptions} >
         {
-          navRoutes.map(content => 
-            content.name!=='home' ? <NavbarContent key={content.name} content={content} /> : ''
+          navbarRoutes.map(content => 
+            <NavbarContent key={content.name} content={content} />
           )
         }
       </Box>

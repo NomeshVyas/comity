@@ -31,7 +31,7 @@ const IndustryEdit = () => {
     handleDeleteInModal,
     course,
     setCourse,
-    handleAdd,
+    handleUpdateAdd,
     handleOpenChildModal,
   } = useContext(industryContext);
 
@@ -167,7 +167,7 @@ const IndustryEdit = () => {
               width: "85%",
               background: "white",
             }}
-            defaultValue={`Courses: ${editIndustry.courses}`}
+            value={`Courses: ${editIndustry.courses}`}
           />
           <Button variant="outlined" onClick={handleOpenChildModal}>
             Edit
@@ -199,7 +199,7 @@ const IndustryEdit = () => {
             value={course}
             onChange={(e) => setCourse(e.target.value)}
           />
-          <Button variant="outlined" onClick={handleAdd}>
+          <Button variant="outlined" onClick={handleUpdateAdd}>
             Add
           </Button>
         </Box>

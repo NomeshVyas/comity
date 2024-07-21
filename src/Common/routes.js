@@ -1,8 +1,4 @@
-import About from "../Pages/About";
-import Capabilities from "../Pages/Capabilities";
-import Carriers from "../Pages/Carriers";
 import Home from "../Pages/Home";
-import Industries from "../Pages/Industries";
 import Contact from "../Components/utils/Contact";
 import Course from "../Components/utils/Course";
 import Login from "../Pages/Login";
@@ -11,8 +7,8 @@ import Admin from "../Pages/Admin";
 import NavAdmin from "../Components/Admin/navbar/NavAdmin";
 import AboutAdmin from "../Components/Admin/about/AboutAdmin";
 import IndustryAdmin from "../Components/Admin/industry/IndustryAdmin";
-// import ContactAdmin from "../Components/Admin/contact/ContactAdmin";
 import FooterAdmin from "../Components/Admin/footer/FooterAdmin";
+import HomeCarouselAdmin from "../Components/Admin/HomeCarousel/HomeCarouselAdmin";
 
 export const homeRoute = {
     name: 'home',
@@ -41,31 +37,31 @@ export const navRoutes = [
         name: 'home',
         path: '/',
         title: 'Home',
-        element: Home
+        showThis: true
     },
     {
         name: 'industries',
         path: '/industries',
         title: 'Industries',
-        element: Industries
+        showThis: true
     },
     {
         name: 'capabilities',
         path: '/capabilities',
         title: 'Capabilities',
-        element: Capabilities
+        showThis: true
     },
     {
         name: 'about',
         path: '/about',
         title: 'About Us',
-        element: About
+        showThis: true
     },
     {
         name: 'careers',
         path: '/carriers',
         title: 'Careers',
-        element: Carriers
+        showThis: true
     },
 ]
 
@@ -116,4 +112,11 @@ export const adminOptionRoutes = [
     title: "Footer",
     element: FooterAdmin,
   },
+  {
+    name: "HomeImgCarouselAdmin",
+    path: `${adminRoute.path}/carousel`,
+    title: "Image Slider",
+    element: HomeCarouselAdmin,
+  },
+  
 ];

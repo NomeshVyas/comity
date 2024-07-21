@@ -8,6 +8,8 @@ import Footer from '../Components/utils/Footer'
 import ProjectSection from '../Components/homeBlocks/ProjectSection'
 import { useNavigate } from 'react-router-dom'
 import { contactRoute } from '../Common/routes'
+import {items} from '../Common/imgCarouse'
+import { lightNavyBg } from '../Common/constants'
 
 function Home() {
 
@@ -21,7 +23,7 @@ function Home() {
   return (
   <>
     <FirstBlock goToContact={goToContact} />
-    <ImgCarousel />
+    <ImgCarousel items={items} bgColor={lightNavyBg} />
     <SecondBlock />
     <ThirdBlock />
     <ProjectSection />

@@ -5,10 +5,17 @@ const navbarSchema = new mongoose.Schema({
         type : String,
         required: true
     },
+    path: {
+        type : String,
+    },
     title: {
         type: String,
         required: true
     },
-}, {timestamps: true})
+    showThis: {
+        type: Boolean,
+        default: true
+    }
+})
 
 export const Navbar = mongoose.model("Navbar", navbarSchema)

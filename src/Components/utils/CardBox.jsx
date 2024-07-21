@@ -29,9 +29,9 @@ const CardBox = ({ card }) => {
             {card.desc}
         </Typography>
 
-        <Button variant='outlined' sx={{
-            maxWidth: 125,
-            paddingInline: 0,
+        <Button variant='contained' sx={{
+            maxWidth: 140,
+            // paddingInline: 0,
             justifySelf: 'baseline',
             mt: 'auto'
         }} size='small' endIcon={<ArrowForward />} >

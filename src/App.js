@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { adminOptionRoutes, adminRoute, courseRoute, loginRoute, navRoutes, signupRoute } from './Common/routes';
+import { adminOptionRoutes, adminRoute, courseRoute, navRoutes, loginRoute, signupRoute } from './Common/routes';
+import About from "./Pages/About";
+import Capabilities from "./Pages/Capabilities";
+import Carriers from "./Pages/Carriers";
+import Home from "./Pages/Home";
+import Industries from "./Pages/Industries";
 import { contactRoute } from './Common/routes';
 import RequireAdmin from './Components/utils/RequireAdmin';
 import Main from './Pages/wrapper/Main';
@@ -9,28 +14,45 @@ import AboutState from './context/admin/AboutState';
 import IndustryState from './context/admin/IndustryState';
 import ContactState from './context/admin/ContactState';
 import SocialMediaState from './context/admin/SocialMediaState';
+import navContext from './context/admin/navContext';
 
 function App() {
+
+  const { getAllShowNav } = useContext(navContext)
+
+  const loadPage = (name) => {
+    if(name === 'home') return Home;
+    else if(name === 'industries') return Industries;
+    else if(name === 'capabilities') return Capabilities;
+    else if(name === 'about') return About;
+    else if(name === 'careers') return Carriers;
+  }
+
+  useEffect(() => {
+    getAllShowNav();
+  }, [])
 
   return (
 
     // Context api components
+    <>
     <IndustryState>
     <AboutState>
     <ContactState>
     <SocialMediaState>
 
-
-  {/* Main Router */}
+    {/* Main Router */}
     <BrowserRouter>
     
       <Routes>
         <Route element={<Main />} >
           {
-            navRoutes.map(el => 
-              <Route key={el.name} path={el.path} element={<el.element />} />
-            )
-          }
+            navRoutes?.map(el => {
+              const Element = loadPage(el.name);
+              return <Route key={el.name} path={el.path} element={<Element />} />
+            }
+          )
+        }
 
           {/* Other Routes */}
           <Route path={contactRoute.path} element={<contactRoute.element />} />
@@ -58,6 +80,7 @@ function App() {
     </ContactState>
     </AboutState>
     </IndustryState>
+    </>
   );
 }
 

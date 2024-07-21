@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Box, Button, Card, Link, Typography } from "@mui/material";
-import { greenColor, navyLogoColor, redColor } from "../../../Common/constants";
+import { navyLogoColor, redColor } from "../../../Common/constants";
 import SocialMediaContext from "../../../context/admin/socialMediaContext";
 
 const FONT_SIZE = 18;

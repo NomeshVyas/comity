@@ -12,7 +12,6 @@ const SocialMediaState = ({ children }) => {
   const getAllSocialMediaService = useApi(apiSocialMediaUrl.SocialMediaAllData);
   const getAllSocialMedia = async () => {
     const res = await getAllSocialMediaService.call();
-    console.log(res?.response);
     if (res?.response?.result?.socialMedias) {
       setAllSocialMedias(res.response.result.socialMedias);
     } else {
@@ -28,7 +27,6 @@ const SocialMediaState = ({ children }) => {
       _Id: id,
     });
     getAllSocialMedia();
-    console.log(res);
   };
 
   // State for creating a new socialMedia

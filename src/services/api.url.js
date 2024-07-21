@@ -50,6 +50,7 @@ export const apiContactUrl = {
     method: "PUT",
   },
 };
+
 export const apiSocialMediaUrl = {
   SocialMediaAllData: {
     endpoint: "socialmedia/",
@@ -72,22 +73,43 @@ export const apiIndustryUrl = {
     industryAllData : {
         endpoint: 'industry/all',
         method: 'GET'
-    },
-    industryShowData : {
+      },
+      industryShowData : {
         endpoint: 'industry',
         method: 'GET'
-    },
-    createIndustry : {
+      },
+      createIndustry : {
         endpoint: 'industry/create',
         method: 'POST'
-    },
-    deleteIndustry : {
+      },
+      deleteIndustry : {
         endpoint: 'industry/delete',
         method: 'DELETE'
-    },
-    updateIndustry: {
+      },
+      updateIndustry: {
         endpoint: 'industry/update',
         method: 'PUT'
+      }
     }
+    
+export const apiNavUrl = {
+  navAllRoute: {
+    endpoint: 'nav/all',
+    method: 'GET'
+  },
+  navShowRoute : {
+    endpoint: 'nav',
+    method: 'GET'
+  },
+  updateNavRoute: {
+    endpoint: 'nav/update',
+    method: 'PUT'
+  }
 }
 
+export const homeImgCarouselUrl = {
+  uploadImgRoute: {
+    endpoint: 'carousel/add',
+    method: 'POST'
+  }
+}

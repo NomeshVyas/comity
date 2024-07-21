@@ -31,8 +31,8 @@ const ThirdBlock = () => {
     },
     }} >
       {
-        cards?.map(card => 
-          <CardBox key={card.title} card={card} />
+        cards?.map((card, index) => 
+          <CardBox key={index} card={card} />
         )
       }
     </Box>

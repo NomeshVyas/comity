@@ -4,7 +4,6 @@ import { ArrowForward, FormatQuoteRounded } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import { navRoutes } from '../../Common/routes'
 import Chart from '../utils/Chart'
-import { homeChartData } from '../../Common/chartData'
 import { useContext, useEffect } from 'react'
 import industryContext from '../../context/admin/industryContext'
 
@@ -35,11 +34,11 @@ const SecondBlock = () => {
             sm: 6,
             md: 10
         },
-        mt: {
-            xs: 5,
-            sm: 7,
-            md: 10
-        },
+        // mt: {
+        //     xs: 5,
+        //     sm: 7,
+        //     md: 10
+        // },
         background: darkNavyBg,
         color: lightNavyBg,
         width: '100%',

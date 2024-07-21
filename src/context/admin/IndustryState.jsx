@@ -40,7 +40,6 @@ const IndustryState = (props) => {
       const res = await getAllIndustriesService.call();
       if (res?.response?.result?.industries)
         setAllIndustries(res.response.result.industries);
-      console.log(res.response.result.industries);
     } catch (err) {
       console.log(err.message);
     }
@@ -53,7 +52,6 @@ const IndustryState = (props) => {
       const res = await getAllShowIndustriesService.call();
       if (res?.response?.result?.industries)
         setAllShowIndustries(res.response.result.industries);
-      console.log(res.response.result.industries);
     } catch (err) {
       console.log(err.message);
     }
@@ -70,17 +68,20 @@ const IndustryState = (props) => {
       ...industryCreate,
       courses: [...industryCreate.courses, course],
     });
+  };
+
+  const handleUpdateAdd = () => {
+    if (course === "" || course === " ") return;
     // for update industry
     setEditIndustry({
       ...editIndustry,
       courses: [...editIndustry.courses, course],
     });
     setCourse("");
-  };
+  }
 
   const handleCreate = async () => {
     const res = await getCreateIndustryService.call(industryCreate);
-    console.log(res.response);
     getAllIndustries();
     setIndustryCreate({
       name: "",
@@ -97,11 +98,10 @@ const IndustryState = (props) => {
   const getDeleteIndustryService = useApi(apiIndustryUrl.deleteIndustry);
 
   const handleDelete = async (id) => {
-    const res = await getDeleteIndustryService.call({
+    await getDeleteIndustryService.call({
       _id: id,
     });
     getAllIndustries();
-    console.log(res.response);
   };
 
   // Handling edit Industry section
@@ -118,10 +118,8 @@ const IndustryState = (props) => {
   const getUpdateIndustryService = useApi(apiIndustryUrl.updateIndustry);
 
   const handleUpdate = async (industry) => {
-    const res = await getUpdateIndustryService.call(industry);
-    console.log(industry);
+    await getUpdateIndustryService.call(industry);
     getAllIndustries();
-    console.log(res.response);
     setOpenEditModal(false);
   };
 
@@ -166,6 +164,7 @@ const IndustryState = (props) => {
         editIndustry,
         setEditIndustry,
         handleUpdate,
+        handleUpdateAdd,
         handleDeleteInModal,
         openChildModal,
         closeChildModal,
